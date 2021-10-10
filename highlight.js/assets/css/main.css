@@ -28,14 +28,23 @@ body {
   padding-right: 15px;
 }
 
-code.hljs {
+pre {
+  display: block;
+  margin: 2em 0;
+  padding: 0.5em;
+  overflow-x: auto;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  direction: ltr;
+  font-size: .875rem;
+  unicode-bidi: bidi-override;
+  color: #c9d1d9;
+  background: #0d1117;
+}
+
+.hljs {
   display: block;
   overflow-x: auto;
   padding: 1em;
-  display: block;
   font-size: .875rem;
-  background-color: #fafafa;
   white-space: pre;
-  margin-top: .65rem;
-  margin-bottom: .65rem;
 }
