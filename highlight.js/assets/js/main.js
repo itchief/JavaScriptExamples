@@ -2,7 +2,7 @@
   let hasLoaded = false;
   const elements = [];
   // функция highlight
-  function highlight() {
+  const highlight = () => {
     const items = elements.slice();
     elements.length = 0;
     items.forEach(item => {
@@ -17,7 +17,7 @@
     });
   }
 
-  function loadCSSandJS() {
+  const loadCSSandJS = () => {
     // вставляем скрипт
     const script = document.createElement('script');
     script.src = '/assets/js/highlight.min.js';
@@ -33,8 +33,8 @@
     style.href = '/assets/css/highlight.min.css';
     document.head.appendChild(style);
   }
-  // создаем observer
-  const observer = new IntersectionObserver((entries, observer) => {
+
+  const cb = (entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const target = entry.target;
@@ -47,10 +47,14 @@
         observer.unobserve(target);
       }
     });
-  }, {
+  }
+
+  const params = {
     root: null,
     rootMargin: '0px 0px 200px 0px'
-  });
+  }
+  // создаем observer
+  const observer = new IntersectionObserver(cb, params);
   document.querySelectorAll('.hljs').forEach(item => {
     observer.observe(item);
   });
